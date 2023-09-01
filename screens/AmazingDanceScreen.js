@@ -32,9 +32,9 @@ const AmazingDanceScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View>
+      {/* <View>
         <Text>かんどう</Text>
-      </View>
+      </View> */}
       <FlatList
         data={posts}
         renderItem={({ item }) => (
