@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 /**
  *
  * @param {
+ * data: すべてのデータ(obj)
  * imageUrl: 画像URL(string)
  * title: タイトル(string)
  * date: 日時(string)
