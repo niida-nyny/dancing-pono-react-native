@@ -20,6 +20,7 @@ const RecruitScreen = ({ navigation }) => {
     );
     try {
       const myResponse = await res.json();
+      // setPosts([...posts, ...myResponse]);
       setPosts([...posts, ...myResponse]);
     } catch (e) {
       console.error(e);

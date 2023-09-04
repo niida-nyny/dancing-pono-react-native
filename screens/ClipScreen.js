@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const ClipScreen = () => {
   const clips = useSelector((state) => state.user.clips);
-  //   const { data, touched } = props;
+  // const { data, touched } = props;
   const navigation = useNavigation();
 
   return (
@@ -16,7 +16,7 @@ const ClipScreen = () => {
         renderItem={({ item }) => (
           <View>
             <ListItem
-              //   data={item}
+              data={item}
               imageUrl={item?._embedded["wp:featuredmedia"]["0"].source_url}
               title={item.title.rendered}
               date={item.date}

@@ -7,7 +7,7 @@ import { useNavigation } from "@react-navigation/native";
  * @param {
  * imageUrl: 画像URL(string)
  * title: タイトル(string)
- * author: ニュース提供元(string)
+ * date: 日時(string)
  * onPress: タップされたときのイベント
  * } props
  * @returns
@@ -16,7 +16,7 @@ export const ListItem = (props) => {
   const { data, touched } = props;
   const navigation = useNavigation();
 
-  const Contaier = touched ? TouchableOpacity : View;
+  const Container = touched ? TouchableOpacity : View;
   //   console.log(data);
   return (
     // <View key={index}>
@@ -34,22 +34,22 @@ export const ListItem = (props) => {
       onPress={props.onPress}
     >
       <View style={styles.leftContainer}>
-        {/* {data.featured_media != 0 && ( */}
-        <Image
-          style={{ width: 100, height: 100 }}
-          // source={{ uri: data?._embedded["wp:featuredmedia"]["0"].source_url }}
-          source={{ uri: props.imageUrl }}
-        />
-        {/* // )} */}
+        {data?.featured_media != 0 && (
+          <Image
+            style={{ width: 100, height: 100 }}
+            // source={{ uri: props.imageUrl }}
+            source={{ uri: data?._embedded["wp:featuredmedia"]["0"].source_url }}
+          />
+        )}
       </View>
       <View style={styles.rightContainer}>
         <Text style={styles.title} numberOfLines={3}>
-          {/* {data?.title.rendered} */}
-          {props.title}
+          {data?.title.rendered}
+          {/* {props.title} */}
         </Text>
         <Text style={styles.subText}>
-          {/* {data?.date} */}
-          {props.date}
+          {data?.date}
+          {/* {props.date} */}
         </Text>
       </View>
     </TouchableOpacity>

@@ -5,7 +5,7 @@ import { WebView } from "react-native-webview";
 const EventScreen = () => {
   return (
     <View style={styles.container}>
-      <WebView source={{ uri: "https://dance.gdp22.com/area_large" }} />
+      <WebView originWhitelist={["*"]} source={{ uri: "https://dance.gdp22.com/area_large" }} />
     </View>
   );
 };

@@ -4,6 +4,7 @@ import { WebView } from "react-native-webview";
 import { ClipButton } from "../components/ClipButton";
 import { useDispatch, useSelector } from "react-redux";
 import { addClip, deleteClip } from "../store/userSlice";
+import Loading from "../components/Loading";
 
 const ArticleScreen = ({ route }) => {
   //   console.log(route.params);
@@ -24,7 +25,12 @@ const ArticleScreen = ({ route }) => {
       <ClipButton onPress={onPressClip} enabled={isClipped} />
       {/* <Text>{article.link}</Text> */}
       {/* <WebView source={{ uri: "https://dance.gdp22.com/archives/50471" }} /> */}
-      <WebView originWhitelist={["*"]} source={{ uri: article.link }} />
+      <WebView
+        originWhitelist={["*"]}
+        source={{ uri: article.link }}
+        startInLoadingState={true}
+        renderLoading={() => <Loading />}
+      />
       {/* <WebView source={{ uri: "https://expo.dev" }} /> */}
       {/* <WebView source={{ uri: "https://dance.gdp22.com/archives/dance_changes_life/ryoko" }} /> */}
     </SafeAreaView>

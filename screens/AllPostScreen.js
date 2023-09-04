@@ -35,15 +35,13 @@ const AllPostScreen = ({ navigation }) => {
       <FlatList
         data={posts}
         renderItem={({ item }) => (
-          <View>
-            <ListItem
-              data={item}
-              onPress={() => navigation.navigate("Article", { article: item })}
-              imageUrl={item._embedded["wp:featuredmedia"]["0"].source_url}
-              title={item.title.rendered}
-              date={item.date}
-            />
-          </View>
+          <ListItem
+            data={item}
+            onPress={() => navigation.navigate("Article", { article: item })}
+            // imageUrl={item._embedded["wp:featuredmedia"]["0"].source_url}
+            // title={item.title.rendered}
+            // date={item.date}
+          />
         )}
         keyExtractor={(item) => {
           // console.log(item.id);
