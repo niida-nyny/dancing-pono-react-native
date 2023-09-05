@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, SafeAreaView, FlatList, ScrollView, ActivityIndicator } from "react-native";
+import { StyleSheet, SafeAreaView, FlatList, ActivityIndicator } from "react-native";
 import { View, Text } from "react-native";
 import { ListItem } from "../components/ListItem";
 import Thumbnail from "../components/Thumbnail";
@@ -11,8 +11,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import Loading from "../components/Loading";
-
-// const URL = "https://dance.gdp22.com/wp-json/wp/v2/amazing_movies?_embed";
 
 const AmazingDanceScreen = ({ navigation }) => {
   const [posts, setPosts] = useState([]);

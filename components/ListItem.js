@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { format } from "date-fns";
 
 /**
  *
@@ -16,6 +17,11 @@ import { useNavigation } from "@react-navigation/native";
 export const ListItem = (props) => {
   const { data, touched } = props;
   const navigation = useNavigation();
+  const apiDate = data?.date; // WordPress REST APIから取得した日付
+  const dateObj = new Date(apiDate);
+  // 2023/09/04 (月) 12:34 のフォーマットに変換
+  const formattedDate = format(dateObj, "yyyy/MM/dd (eee) HH:mm");
+  console.log(formattedDate); // 出力: "2023/09/04 (月) 12:34"
 
   const Container = touched ? TouchableOpacity : View;
   //   console.log(data);
@@ -49,7 +55,7 @@ export const ListItem = (props) => {
           {/* {props.title} */}
         </Text>
         <Text style={styles.subText}>
-          {data?.date}
+          {formattedDate}
           {/* {props.date} */}
         </Text>
       </View>
