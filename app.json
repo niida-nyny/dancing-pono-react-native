@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "dancingPono",
+    "name": "Dancing Pono",
     "slug": "dancingPono",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -25,6 +25,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ecbc6be0-e00d-4c6a-8a57-7a76a4ac3435"
+      }
     }
   }
 }
