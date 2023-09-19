@@ -15,7 +15,7 @@ import Loading from "../components/Loading";
 const AmazingDanceScreen = ({ navigation }) => {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(1);
-  const [isFetching, setisFetching] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
   const [loading, setLoading] = useState(false);
 
   // 最大ページ数をカウントするロジック
@@ -42,9 +42,11 @@ const AmazingDanceScreen = ({ navigation }) => {
     }
   }
 
-  fetchAllPages(); // 最大ページ数を計算
-  // ここでmaxPage変数を使用できます
-  // console.log("上の最大ページ数:", maxPage);
+  useEffect(() => {
+    fetchAllPages(); // 最大ページ数を計算
+    // ここでmaxPage変数を使用できます
+    // console.log("上の最大ページ数:", maxPage);
+  }, []);
 
   useEffect(() => {
     fetchData(posts, setPosts);
@@ -59,19 +61,21 @@ const AmazingDanceScreen = ({ navigation }) => {
 
     try {
       const myResponse = await res.json();
-
-      fetchAllPages();
+      // fetchAllPages の非同期終了を待つ
+      await fetchAllPages();
       // ここでmaxPage変数を使用できます
-      console.log("if上", maxPage);
+      // console.log("if上", maxPage);
       const lastPage = maxPage;
-      if (page <= lastPage) {
+      if (Array.isArray(myResponse)) {
         setPosts([...posts, ...myResponse]);
-        setisFetching(false);
-      } else if (page > maxPage) {
-        setisFetching(false);
+      } else {
+        // 配列でない場合のエラーハンドリングを行うか、何らかのデフォルト処理を実行する
+        console.error("myResponse is not an array:", myResponse);
+        // 例えばエラーメッセージを表示するか、デフォルトの処理を行うなど
       }
+      setIsFetching(false);
     } catch (e) {
-      setisFetching(false);
+      setIsFetching(false);
       console.error(e);
     }
     setLoading(false);
@@ -80,7 +84,7 @@ const AmazingDanceScreen = ({ navigation }) => {
   if (posts.length === 0) {
     return (
       <View style={[styles.loadingContainer]}>
-        <ActivityIndicator size="large" color="#101010" />
+        <ActivityIndicator size="large" color="red" />
       </View>
     );
   } else {
@@ -96,20 +100,20 @@ const AmazingDanceScreen = ({ navigation }) => {
           )}
           keyExtractor={(item, index) => index.toString()}
           onEndReached={() => {
-            setisFetching(true);
+            setIsFetching(true);
             setPage(page + 1);
           }}
           onEndReachedThreshold={0.3}
         />
 
         <StatusBar style="auto" />
-        {isFetching === true && (
+        {/* {isFetching === true && (
           <View style={[styles.loadingBottomContainer]}>
             <ActivityIndicator size="large" color="#101010" />
           </View>
         )}
 
-        {loading && <Loading />}
+        {loading && <Loading />} */}
       </SafeAreaView>
     );
   }
