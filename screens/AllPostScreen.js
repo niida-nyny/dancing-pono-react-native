@@ -40,10 +40,11 @@ const AllPostScreen = ({ navigation }) => {
       console.error("エラー:", error);
     }
   }
-
-  fetchAllPages(); // 最大ページ数を計算
-  // ここでmaxPage変数を使用できます
-  // console.log("上の最大ページ数:", maxPage);
+  useEffect(() => {
+    fetchAllPages(); // 最大ページ数を計算
+    // ここでmaxPage変数を使用できます
+    // console.log("上の最大ページ数:", maxPage);
+  }, []);
 
   useEffect(() => {
     fetchData(posts, setPosts);
@@ -58,8 +59,8 @@ const AllPostScreen = ({ navigation }) => {
 
     try {
       const myResponse = await res.json();
-
-      fetchAllPages();
+      // fetchAllPages の非同期終了を待つ
+      await fetchAllPages();
       // ここでmaxPage変数を使用できます
       console.log("if上", maxPage);
       const lastPage = maxPage;
