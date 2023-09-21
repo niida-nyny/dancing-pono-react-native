@@ -69,7 +69,7 @@ const InterviewScreen = ({ navigation }) => {
         setPosts([...posts, ...myResponse]);
       } else {
         // 配列でない場合のエラーハンドリングを行うか、何らかのデフォルト処理を実行する
-        console.error("myResponse is not an array:", myResponse);
+        // console.error("myResponse is not an array:", myResponse);
         // 例えばエラーメッセージを表示するか、デフォルトの処理を行うなど
       }
       setIsFetching(false);

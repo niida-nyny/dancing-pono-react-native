@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { format } from "date-fns";
@@ -21,7 +20,7 @@ export const ListItem = (props) => {
   const dateObj = new Date(apiDate);
   // 2023/09/04 (月) 12:34 のフォーマットに変換
   const formattedDate = format(dateObj, "yyyy/MM/dd (eee) HH:mm");
-  console.log(formattedDate); // 出力: "2023/09/04 (月) 12:34"
+  // console.log(formattedDate); // 出力: "2023/09/04 (月) 12:34"
 
   const Container = touched ? TouchableOpacity : View;
   //   console.log(data);
