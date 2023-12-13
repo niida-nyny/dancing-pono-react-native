@@ -36,8 +36,8 @@ const screenOption = ({ route }) => ({
       return <FontAwesome name="film" size={size} color={color} />;
     } else if (route.name === "RecruitTab") {
       return <FontAwesome name="handshake-o" size={size} color={color} />;
-    } else if (route.name === "EventTab") {
-      return <FontAwesome name="calendar" size={size} color={color} />;
+      // } else if (route.name === "EventTab") {
+      //   return <FontAwesome name="calendar" size={size} color={color} />;
     } else if (route.name === "ClipTab") {
       return <FontAwesome name="bookmark" size={size} color={color} />;
     }
@@ -122,11 +122,11 @@ const AppNavigator = () => {
               component={RecruitStack}
               options={{ headerShown: false, title: "募集&依頼" }}
             />
-            <Tab.Screen
+            {/* <Tab.Screen
               name="EventTab"
               component={EventScreen}
               options={{ headerShown: false, title: "イベント" }}
-            />
+            /> */}
 
             <Tab.Screen
               name="ClipTab"
